@@ -159,7 +159,7 @@ fmt.Println(query, args)
 ```go
 builder := Delete{
     From:  "users",
-    Where: &Condition{Field: "name", Operator: semen_builder.Equal, Arg: "SamOgon"},
+    Where: &Condition{Field: "name", Operator: Equal, Arg: "SamOgon"},
 }
 
 query, args := builder.ToSql()
@@ -203,7 +203,7 @@ builder := Select{
 }
 
 if searchName != "" {
-    builder.Where = &Condition{Field: "name", Operator: semen_builder.Equal, Arg: searchName}
+    builder.Where = &Condition{Field: "name", Operator: Equal, Arg: searchName}
 }
 
 if searchId != 0 {
