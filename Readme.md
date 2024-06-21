@@ -2,7 +2,7 @@
 
 > Если нужно сделать множественный GroupBy или OrderBy, то используй **MultiGroupBy** и **Orders**
 
-```
+```go
 builder := Select{
     From: "users",
     As:   "u",
@@ -61,7 +61,7 @@ fmt.Println(query, args)
 > Каждое поле, которое должно попасть в запрос должно иметь тег db c название поля в таблице.<br>
 > Если мы хотим указать тег db, но не хотим, чтоб поле спарсилось, то указываем тег sb:"skip".<br>
 > Таким образом можно комбинировать явно указанные поля и автоматически спарсенные поля.
-```
+```go
 type UserModel struct {
 	Id          uint           `db:"id"`
 	Uuid        string         `db:"uuid"`
@@ -86,7 +86,7 @@ fmt.Println(query, args)
 
 # Пример Update
 
-```
+```go
 builder := Update{
     Table:  "users",
     Values: []SetValue{
@@ -108,7 +108,7 @@ fmt.Println(query, args)
 
 # Пример Insert с указанием полей
 
-```
+```go
 builder := Insert{
     Table:        "users",
     Values:       []Value{
@@ -132,7 +132,7 @@ fmt.Println(query, args)
 
 # Пример Insert с автоматическим парсингом полей из структуры
 > Каждое поле, которое должно попасть в запрос должно иметь тег db c название поля в таблице.
-```
+```go
 type CreateUserDto struct {
     Name     string `db:"name"`
     LastName string `db:"last_name"`
@@ -156,7 +156,7 @@ fmt.Println(query, args)
 ```
 
 # Пример Delete
-```
+```go
 builder := Delete{
     From:  "users",
     Where: &Condition{Field: "name", Operator: semen_builder.Equal, Arg: "SamOgon"},
@@ -169,7 +169,7 @@ fmt.Println(query, args)
 
 # Пример In
 > Чтоб передать несколько значений в условие, используй ***Args***
-```
+```go
 builder := Select{
     From: "users",
     As:   "u",
@@ -189,7 +189,7 @@ fmt.Println(query, args)
 > Если необходимо добавить ***Condition*** в пустой ***Where*** по условию, то можно использовать функции ***AppendOr*** и ***AppendAnd***.
 > Если ***Where*** не пустой, то будет добавлено ***Condition*** с and/or, иначе ***Condition*** стананет корневым.
 
-```
+```go
 searchName := ""
 searchId := 228
 
