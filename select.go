@@ -1,4 +1,4 @@
-package builder
+package semen_builder
 
 import (
 	"fmt"

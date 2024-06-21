@@ -1,4 +1,4 @@
-package builder
+package semen_builder
 
 const DESC = "DESC"
 const ASC = "ASC"
